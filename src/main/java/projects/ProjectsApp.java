@@ -88,9 +88,9 @@ public class ProjectsApp {
 
 	private void deleteProject() {
 		listProjects();
-		Integer projectId = getIntInput("Enter the ID of the project to delete");
+		Integer projectId = getIntInput("\nEnter the ID of the project to delete");
 		projectService.deleteProject(projectId);
-		System.out.println("Project " + projectId + " was deleted successfuly.");
+		System.out.println("\nProject " + projectId + " was deleted successfuly.");
 		if(Objects.nonNull(curProject) && curProject.getProjectId().equals(projectId)) {
 			curProject = null;
 		}
@@ -139,7 +139,7 @@ public class ProjectsApp {
 	 */
 	private void selectProject() {
 		listProjects();
-		Integer projectId = getIntInput("Enter a project ID to select a project");
+		Integer projectId = getIntInput("\nEnter the project ID to select it");
 
 		/*
 		 * Unselect the current project. This must be done as a pre-step to fetching the project because
@@ -184,7 +184,7 @@ public class ProjectsApp {
 		project.setNotes(notes);
 
 		Project dbProject = projectService.addProject(project);
-		System.out.println("You have successfully created project: " + dbProject);
+		System.out.println("\nYou have successfully created project: " + dbProject);
 	}
 
 	/**
@@ -230,7 +230,7 @@ public class ProjectsApp {
 	private int getUserSelection() {
 		printOperations();
 
-		Integer input = getIntInput("Enter a menu selection");
+		Integer input = getIntInput("Select a menu option 1-5, or press the Enter key to quit");
 
 		return Objects.isNull(input) ? -1 : input;
 	}
@@ -277,7 +277,7 @@ public class ProjectsApp {
 	 * Print the menu selections, one per line.
 	 */
 	private void printOperations() {
-		System.out.println("\nThese are the available selections. Press the Enter key to quit:");
+		System.out.println("\nSelect a menu option by number, or press the Enter key to quit:");
 
 		/* With Lambda expression */
 		operations.forEach(line -> System.out.println("  " + line));
@@ -288,7 +288,7 @@ public class ProjectsApp {
 		// }
 
 		if(Objects.isNull(curProject)) {
-			System.out.println("\nYou are not working with a project.");
+			System.out.println("\nThere is no project currently selected.");
 		}
 		else {
 			System.out.println("\nYou are working with project: " + curProject);
