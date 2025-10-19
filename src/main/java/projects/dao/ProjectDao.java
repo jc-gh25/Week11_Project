@@ -332,6 +332,8 @@ public class ProjectDao extends DaoBase {
 
 				boolean modified = stmt.executeUpdate() == 1;
 				commitTransaction(conn);
+				System.out.println("\nProject update succeeded.");
+				System.out.println("");
 				return modified;
 			} catch(Exception e) {
 				rollbackTransaction(conn);
